@@ -1,11 +1,11 @@
 ﻿namespace HelpJakob
 {
-    public static class MessageSender
+    public class MessageSender
     {
         /// <summary>
         /// Used to send msg to recipient 
         /// </summary>
-        public static void SendMessage(string recipient, MessageCarrier msgCarrier, Message msg, bool isHTML)
+        public void SendMessage(string recipient, MessageCarrier msgCarrier, Message msg, bool isHTML)
         {
             // In this scope we send a email out to the reciver
             if (msgCarrier.Equals(MessageCarrier.Smtp))
@@ -30,7 +30,7 @@
         /// <summary>
         /// Used to sends message to all 
         /// </summary>
-        public static void SendMessageToAll(string[] recipients, MessageCarrier msgCarrier, Message msg, bool isHTML)
+        public void SendMessageToAll(string[] recipients, MessageCarrier msgCarrier, Message msg, bool isHTML)
         {
             foreach (string recipient in recipients)
             {
