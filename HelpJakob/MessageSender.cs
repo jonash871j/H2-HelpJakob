@@ -5,7 +5,7 @@
         /// <summary>
         /// Used to send msg to recipient 
         /// </summary>
-        public static void SendMessage(MessageCarrier msgCarrier, Message msg, bool isHTML)
+        public static void SendMessage(string recipient, MessageCarrier msgCarrier, Message msg, bool isHTML)
         {
             // In this scope we send a email out to the reciver
             if (msgCarrier.Equals(MessageCarrier.Smtp))
@@ -14,7 +14,7 @@
                 {
                     msg.Body = HTMLConverter.BodyToHTML(msg.Body);
                 }
-                // Implements Smtp code
+                // her implementeres alt koden til at sende via Smtp
             }
 
             if (msgCarrier.Equals(MessageCarrier.VMessage))
@@ -23,7 +23,18 @@
                 {
                     msg.Body = HTMLConverter.BodyToHTML(msg.Body);
                 }
-                // Implements VMessage code
+                // her implementeres alt koden til at sende via VMessage
+            }
+        }
+
+        /// <summary>
+        /// Used to sends message to all 
+        /// </summary>
+        public static void SendMessageToAll(string[] recipients, MessageCarrier msgCarrier, Message msg, bool isHTML)
+        {
+            foreach (string recipient in recipients)
+            {
+                SendMessage(recipient, msgCarrier, msg, isHTML);
             }
         }
     }
